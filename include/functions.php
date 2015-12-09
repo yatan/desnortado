@@ -1,24 +1,22 @@
-<?
+<?php
 
 session_start();
 include_once("config.php");
 include_once('config_variables.php');
-select_lang();
+//select_lang();
+
 /*
-
-  Script con varias funciones:
-
-
-  online(): Muestra si el servidor mysql esta disponible o no
-  sql($sql): Ejecuta la sentencia sql, si da error muestra mensaje de error con die()
- *         devuelve un array con los valores obtenidos si hay mas de 1,
- * 			o el valor sin array si solo devuelve 1 valor
-  enviar_mail($destino, $nick, $id)
- *        Envia un correo para activar la cuenta --EN DESARROLLO--
-  anadir_foro($usuario, $password, $email)
- *         Añade un usuario al foro smf
-
- */
+mysqli_online(): Devuelve un texto online si el server de sql esta disponible o rojo offline si no lo esta.
+smtp_online(): Ni zorra
+mysqli_online2(): true si el server sql esta activo o false en caso contrario.
+sql_error($sql): Manda una query y si da error suelta el mensaje de error con un die(). Si funciona devuelve el result normal.
+sql_data($result): Devuelve los resultados en asociativo y los libera o false si no habia datos
+sql($sql): Devuelve una unica cosa si en el resultado solo habia una fila y una columna. Si habia varias columnas, devuelve un array del tipo $resultado[idfila]['columna']
+*Esto ha sido renombrado, si enceuntras alguna funcion sql2 renombrala como sql
+enviar_mail($destino, $nick): Pues eso
+check_lang($lengua): Carga en la variable de session $_SESSION["lang"] el idioma del usuario. Compruebo que el archivo esxiste en ./i18n/lang.php
+getString($text): Coge el texto de id $text del diccionario del user
+*/
 
 function mysqli_online() {
     $ip = "localhost";
@@ -58,8 +56,8 @@ function mysqli_online2() {
 }
 
 function sql_error($sql) {
-
-    $result = mysql_query($sql);
+	global $link;
+    $result = mysql_query($link,$sql);
 
     if ($result == false) {
         //error_log("SQL error: ".mysql_error()."\n\nOriginal query: $sql\n");

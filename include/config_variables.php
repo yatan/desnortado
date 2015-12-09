@@ -4,5 +4,5 @@
  * (por ejemplo puntos de experiencia necesarios para subir de nivel, limite de desarrollo tecnológico...
  */
  
- //De momento nada
+ //De momento nada de nada
  ?>
