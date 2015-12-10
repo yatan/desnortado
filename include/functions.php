@@ -7,7 +7,7 @@ include_once('config_variables.php');
 
 /*
 mysqli_online(): Devuelve un texto online si el server de sql esta disponible o rojo offline si no lo esta.
-smtp_online(): Ni zorra
+smtp_online(): Devuelve el estado del servidor smtp (mail)
 mysqli_online2(): true si el server sql esta activo o false en caso contrario.
 sql_error($sql): Manda una query y si da error suelta el mensaje de error con un die(). Si funciona devuelve el result normal.
 sql_data($result): Devuelve los resultados en asociativo y los libera o false si no habia datos
