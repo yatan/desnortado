@@ -39,3 +39,4 @@ Thumbs.db
 # Configuraciones locales #
 ###########################
 config.php
+.vscode/settings.json

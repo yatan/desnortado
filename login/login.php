@@ -71,7 +71,7 @@ font-size: 24px;
                     </div>
                     
                     <div id="login">
-                        <form action="/login/logear.php" method="POST">
+                        <form action="/desnortado/login/logear.php" method="POST">
                             <fieldset>
                                 <legend>Login</legend>
                             <p><label for="nick" style="color:#781351;">Nick:</label><input tabindex="1" type="text" name="nick"></p>

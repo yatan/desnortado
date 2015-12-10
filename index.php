@@ -1,6 +1,8 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
 <?php
-
-
+include("index_head.php"); 
 include_once("./include/funciones.php");
 //Comprobacion del servidor mysql
 if(mysqli_online2()==false)
@@ -36,15 +38,7 @@ $objeto_usuario = new usuario($_SESSION['id_usuario']);
 if(isset($_GET['lang']))
     $idioma = $_GET['lang'];
 
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html>
-<?php 
-include("index_head.php"); 
-
-?>
-    
+?>   
     <body> 
         <div class="blur">
             <div class="shadow">
@@ -52,15 +46,15 @@ include("index_head.php");
                     <?php include("cabecera.php"); ?><br>
                     <div id="status">
                         <center>
-                            <? //include("status.php"); ?>
+                            <?php //include("status.php"); ?>
                         </center>
                     </div>
                     <div id="menu">
-                        <? include("menu.php"); ?>  
+                        <?php include("menu.php"); ?>  
                     </div><!--menu-->
                     <div id="cuerpo">
                         <center>
-                        <?
+                        <?php
                         
                         if(isset($_GET['mod']))
                         {    
@@ -79,15 +73,19 @@ include("index_head.php");
                             ?>
                             <div id="columnas" style="padding: 10px; width: 58.4em; height: 25em;">
                                 <div id="columna1" style="float: right; width: 41em; height: 25em;">
-                                   <? //include("columna1.php"); ?>
+                                   <?php //include("columna1.php"); ?>
                                 </div>
 
                                 <div id="columna2" style="float: left; height: 25em; width: 17em;">
-                                   <? //include("columna2.php"); ?>
+                                   <?php //include("columna2.php"); ?>
                                 </div>
                             </div><!-- columnas -->
                                 
 
-  <?php
+<?php 
+}
 }
 ?>
+
+</body>
+</html>

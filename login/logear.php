@@ -17,25 +17,25 @@ die(getString('login_nopass'));
 else
 $pass = md5($_POST['pass']);
 
-$consulta = sql("SELECT nick, id FROM players WHERE nick='$user'");
+$consulta = sql("SELECT email FROM players WHERE email='$user'");
 
 if($consulta==false)//El usuario no esta en la BD
     die(getString('login_nomatch'));
 else
+    $consulta = false;
     //$consulta = checkban($consulta['id_usuario']);
-//TBD: Arreglar el checkban
-$consulta = false;
+    //TBD: Arreglar el checkban
+    
 if($consulta == true ) //Si esta ban    
     die(getString('login_banned'));
 else
-    $consulta = sql("SELECT id FROM players WHERE nick='$user' AND pass='$pass'");
+    $consulta = sql("SELECT id FROM players WHERE email='$user' AND pass='$pass'");
 
 if($consulta==false)//No concuerdan user y pass
     die(getString('login_nomatch2'));
 else
 {
     $_SESSION['id_usuario'] = $consulta;
-
     //Se pone la zona horaria bien
     date_default_timezone_set('Europe/Madrid');
     $hora = date("H:i:s"); 

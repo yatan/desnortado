@@ -3,7 +3,7 @@
 session_start();
 include_once("config.php");
 include_once('config_variables.php');
-//select_lang();
+select_lang();
 
 /*
 mysqli_online(): Devuelve un texto online si el server de sql esta disponible o rojo offline si no lo esta.
@@ -67,7 +67,7 @@ function sql_error($sql) {
     if ($result == false) {
         //error_log("SQL error: ".mysql_error()."\n\nOriginal query: $sql\n");
         // Remove following line from production servers 
-        die("SQL error: " . mysql_error() . "\b<br>\n<br>Original query: $sql \n<br>\n<br>");
+        die("SQL error: " . mysqli_error($link) . "<br>\n<br>Original query: $sql \n<br>\n<br>");
     }
     return $result;
 }
@@ -84,18 +84,18 @@ function sql_data($result) {
 function sql($sql) {
 
     $result = sql_error($sql);
-
-    if (mysqli_num_rows($result) == 1) {
-        if (mysqli_num_fields($result) == 1) {
-            $dato = array();
-            $dato[0] = mysqli_fetch_row($result);
-            return $dato;
-        } else {
-            $table = array();
-            $table[0] = sql_data($result);
+    if (mysqli_num_rows($result) == 1) 
+    {
+        if (mysqli_num_fields($result) == 1) 
+        {
+            $dato = mysqli_fetch_row($result);
+            return $dato[0];
         }
-    } else {
-
+        else
+            $table = sql_data($result);
+    } 
+    else 
+    {
         $table = array();
         if (mysqli_num_rows($result) > 0) {
             $i = 0;
@@ -152,8 +152,8 @@ function check_lang($lengua) {
 function getString($text) {
     if (!isset($i18n_array)) {
 
-        include $_SERVER['DOCUMENT_ROOT'] . '/i18n/' . $_SESSION['i18n_default'] . ".php";
-        include $_SERVER['DOCUMENT_ROOT'] . '/i18n/' . $_SESSION['i18n'] . ".php";
+        include $_SERVER['DOCUMENT_ROOT'] . 'desnortado/i18n/' . $_SESSION['i18n_default'] . ".php";
+        include $_SERVER['DOCUMENT_ROOT'] . 'desnortado/i18n/' . $_SESSION['i18n'] . ".php";
     }
 
     return $i18n_array[$text];
