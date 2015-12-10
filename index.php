@@ -25,7 +25,8 @@ if(!isset($_SESSION['id_usuario']))
 }
 else
 {
-
+//TBD: Simplemente para que sepais que estas logeados
+echo "Ya estas logado";
     
 require("usuarios/objeto_usuario.php");
 $objeto_usuario = new usuario($_SESSION['id_usuario']);

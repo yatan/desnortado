@@ -10,11 +10,12 @@ class usuario
 
     
     function usuario($id){
-        $usuario = sql("SELECT * FROM players_game WHERE id = ."$id);
+        $usuario = sql("SELECT * FROM players_game WHERE id = ".$id);
         if ($usuario==false)
             return false;
         else{
 		$this->id_usuario = $id;	
 		}
     }
+}
 ?>

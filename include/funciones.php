@@ -56,8 +56,13 @@ function mysqli_online2() {
 }
 
 function sql_error($sql) {
+	/*global $server;
+	global $dbuser;
+	global $dbpass;
+	global $database;
+	$link = mysql_connect($server,$dbuser,$dbpass,$database);*/
 	global $link;
-    $result = mysql_query($link,$sql);
+    $result = mysqli_query($link,$sql);
 
     if ($result == false) {
         //error_log("SQL error: ".mysql_error()."\n\nOriginal query: $sql\n");
@@ -80,10 +85,6 @@ function sql($sql) {
 
     $result = sql_error($sql);
 
-    //Si no devuelve nada sale de la funcion
-    if ($result == 1)
-        return true;
-
     if (mysqli_num_rows($result) == 1) {
         if (mysqli_num_fields($result) == 1) {
             $dato = array();
@@ -102,7 +103,7 @@ function sql($sql) {
                 $i++;
             unset($table[$i]);
         }
-        mysql_free_result($result);
+        mysqli_free_result($result);
     }
     return $table;
 }
@@ -128,10 +129,15 @@ function enviar_mail($destino, $nick) {
     mail($destino, $titulo, $mensaje, $cabeceras);
 }
 
+function select_lang()
+{//TBD: Elige la lengua del usuario, de momento se fuerza el es que es la unica
+	check_lang('es');
+}
+
 function check_lang($lengua) {
 
     $lengua_defecto = "es";
-    $fichero = "./i18n/" . $lengua . ".php";
+    $fichero = "/i18n/" . $lengua . ".php";
 
     if (!file_exists($fichero)) {
         $lengua = $lengua_defecto;

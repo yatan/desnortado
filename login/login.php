@@ -67,7 +67,7 @@ font-size: 24px;
                 <div id="contenido">
                     <?php include("cabecera.php");?><br/>
                     <div id="texto" style="color:black; font-size: large;">
-                       <?echo getString("login_texto");?>
+                       <?php echo getString("login_texto");?>
                     </div>
                     
                     <div id="login">
