@@ -32,39 +32,19 @@
 
 <div class="Table">
     <div class="Title">
-        <p>This is a Table</p>
+        <p>Mapa</p>
     </div>
-    <div class="Heading">
-        <div class="Cell">
-            <p>Heading 1</p>
-        </div>
-        <div class="Cell">
-            <p>Heading 2</p>
-        </div>
-        <div class="Cell">
-            <p>Heading 3</p>
-        </div>
-    </div>
-    <div class="Row">
-        <div class="Cell">
-            <p>Row 1 Column 1</p>
-        </div>
-        <div class="Cell">
-            <p>Row 1 Column 2</p>
-        </div>
-        <div class="Cell">
-            <p>Row 1 Column 3</p>
-        </div>
-    </div>
-    <div class="Row">
-        <div class="Cell">
-            <p>Row 2 Column 1</p>
-        </div>
-        <div class="Cell">
-            <p>Row 2 Column 2</p>
-        </div>
-        <div class="Cell">
-            <p>Row 2 Column 3</p>
-        </div>
-    </div>
+    <?php
+    for ($i=0; $i < 10; $i++) {
+       echo "<div class=\"Row\">";
+       for ($j=0; $j < 10; $j++) { 
+           echo "<div class=\"Cell\">";
+           echo "<p>[$i] [$j]</p>";
+           echo "</div>";
+       }
+       echo "</div>";
+    }
+    ?>
+
+
 </div>
