@@ -131,7 +131,6 @@ function enviar_mail($destino, $nick) {
 function check_lang($lengua) {
 
     $lengua_defecto = "es";
-
     $fichero = "./i18n/" . $lengua . ".php";
 
     if (!file_exists($fichero)) {
