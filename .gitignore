@@ -39,4 +39,8 @@ Thumbs.db
 # Configuraciones locales #
 ###########################
 config.php
+<<<<<<< HEAD
 .vscode/settings.json
+=======
+.vscode/settings.json
+>>>>>>> refs/remotes/origin/login
