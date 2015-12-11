@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-	
-<?php
-include("./include/functions.php");
-=======
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html>
@@ -43,7 +32,6 @@ echo "Ya estas logado";
     
 require("usuarios/objeto_usuario.php");
 $objeto_usuario = new usuario($_SESSION['id_usuario']);
->>>>>>> refs/remotes/origin/login
 
 //Si existe el idioma normalmente en la url del tipo /es/ lo establece como
 //variable que se carga al principio '''$idioma'''
@@ -100,8 +88,4 @@ if(isset($_GET['lang']))
 ?>
 
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> refs/remotes/origin/login
