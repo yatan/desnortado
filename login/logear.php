@@ -42,6 +42,7 @@ else
     $dia = date("Y.n.j");
     $ip = $_SERVER['REMOTE_ADDR'];
     $navegador = $_SERVER['HTTP_USER_AGENT'];    
+    echo "<a href=\"/desnortado/\">login correcto<br>vuelve atras</a>";
 }
     
 ?>
