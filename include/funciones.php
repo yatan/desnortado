@@ -63,7 +63,7 @@ function sql_error($sql) {
 	$link = mysql_connect($server,$dbuser,$dbpass,$database);*/
 	global $link;
     $result = mysqli_query($link,$sql);
-
+var_dump($result);
     if ($result == false) {
         //error_log("SQL error: ".mysql_error()."\n\nOriginal query: $sql\n");
         // Remove following line from production servers 
@@ -84,6 +84,7 @@ function sql_data($result) {
 function sql($sql) {
 
     $result = sql_error($sql);
+
     if (mysqli_num_rows($result) == 1) 
     {
         if (mysqli_num_fields($result) == 1) 
