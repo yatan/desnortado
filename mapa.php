@@ -4,11 +4,16 @@
         <p>Mapa</p>
     </div>
     <?php
-    for ($i=0; $i < 10; $i++) {
+	$x_centro = 0;
+	$y_centro = 0;
+	$x_rango = 2;
+	$y_rango = 2;
+
+    for ($y = $y_centro + $y_rango; $y >= $y_centro - $y_rango; $y--) {
        echo "<div class=\"Row\">";
-       for ($j=0; $j < 10; $j++) { 
+       for ($x = $x_centro - $x_rango; $x <= $x_centro + $x_rango; $x++) { 
            echo "<div class=\"Cell\">";
-           echo "<p>[$i] [$j]</p>";
+           echo "<p>[$x] [$y]</p>";
            echo "</div>";
        }
        echo "</div>";
