@@ -42,6 +42,8 @@ else
     $dia = date("Y.n.j");
     $ip = $_SERVER['REMOTE_ADDR'];
     $navegador = $_SERVER['HTTP_USER_AGENT'];    
+	
+	header("Location: /desnortado/"); //<-- Redireccion a la pagina principal
 }
     
 ?>
