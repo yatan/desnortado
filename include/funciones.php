@@ -152,8 +152,8 @@ function check_lang($lengua) {
 function getString($text) {
     if (!isset($i18n_array)) {
 
-        include $_SERVER['DOCUMENT_ROOT'] . 'desnortado/i18n/' . $_SESSION['i18n_default'] . ".php";
-        include $_SERVER['DOCUMENT_ROOT'] . 'desnortado/i18n/' . $_SESSION['i18n'] . ".php";
+        include $_SERVER['DOCUMENT_ROOT'] . '/desnortado/i18n/' . $_SESSION['i18n_default'] . ".php";
+        include $_SERVER['DOCUMENT_ROOT'] . '/desnortado/i18n/' . $_SESSION['i18n'] . ".php";
     }
 
     return $i18n_array[$text];
