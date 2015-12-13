@@ -81,10 +81,12 @@ function sql_data($result) {
     return false;
 }
 
-function sql($sql) {
+function sql($sql,$override = false) {
 
     $result = sql_error($sql);
-
+	
+	if($override) return true;
+	
     if (mysqli_num_rows($result) == 1) 
     {
         if (mysqli_num_fields($result) == 1) 
@@ -158,6 +160,6 @@ function getString($text) {
     }
 
     return $i18n_array[$text];
-}
+}  
 
 ?>
