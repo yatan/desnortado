@@ -1,0 +1,10 @@
+<?xml version='1.0' standalone='yes'?>
+<item>
+	<id>1</id>
+	<nombre_clave>hacha</nombre_clave>
+	<descripcion>hacha_desc</descripcion>
+	<ataque>2</ataque>
+	<peso>5</peso>
+	<valor>100</valor>
+	<img>hacha.png</img>
+</item>

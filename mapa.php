@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="css/style.css">
+
+<div id="borderimg1">
+
 <div class="Table">
     <div class="Title">
         <p>Mapa</p>
@@ -19,4 +22,13 @@
        echo "</div>";
     }
     ?>
+</div>
+
+<div class="Lateral_Derecho">
+    <h2>Menu</h2>
+    <p><a href="#">Mover</a></p>
+    <p><a href="#">Observar</a></p>
+    <p><a href="#">Coger</a></p>
+</div>    
+
 </div>
