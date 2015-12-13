@@ -70,7 +70,7 @@ class item
 	}
 	public function getImg()
 	{
-		return (string) $_SERVER['DOCUMENT_ROOT'] .'/desnortado/img/'.$this->img;
+		return (string) '/desnortado/img/'.$this->img;
 	}
 
 }
