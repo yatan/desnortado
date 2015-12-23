@@ -21,7 +21,7 @@
 		   if(isset($items[$x][$y])){
 			   foreach($items[$x][$y] as $item)
 			   {
-				   echo '<img src = "'.$item->getImg().'" alt = "'.$item->getNombre().'" >';
+				   echo '<img src = "'.$item->getIcon().'" alt = "'.$item->getNombre().'" >';
 			   }
 		   }
            echo "</div>";

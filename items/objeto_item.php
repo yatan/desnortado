@@ -12,6 +12,7 @@ class item
 	public $peso;
 	public $valor;
 	public $img;	
+	public $icon;
 	
 	function item($id_item,$id_tipo = 0)
 	{	
@@ -35,6 +36,7 @@ class item
 		//Valor de venta es valor/2 al precio de compra (Ah si?)
 		$this->valor = $xml->valor[0]/2;
 		$this->img = $xml->img[0];
+		$this->icon = $xml->icon[0];
 		//Si el item dispone de ataque, se le añade
 		if(isset($xml->ataque[0]))
 			$this->ataque = $xml->ataque[0];
@@ -75,6 +77,10 @@ class item
 	public function getImg()
 	{
 		return (string) './img/'.$this->img;
+	}
+	public function getIcon()
+	{
+		return (string) './img/'.$this->icon;
 	}
 
 }
