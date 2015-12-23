@@ -407,4 +407,7 @@ $i18n_array['ciudadania'] = "Ciudadania";
 $i18n_array['pais_ciudadania'] = "Elige el pais donde quieres solicitar la ciudadania:";
 $i18n_array['solicitar'] = "Solicitar";
 
+//Items
+$i18n_array['hacha'] = "Hacha";
+$i18n_array['hacha_desc'] ="Pequeña hacha que puedes usarla con una mano para hacer algo de daño.";
 ?>
