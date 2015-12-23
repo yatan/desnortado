@@ -1,6 +1,6 @@
 <?php
 
-include("../include/funciones.php");
+//include("../include/funciones.php");
 select_lang();
 
 class item
@@ -13,22 +13,26 @@ class item
 	public $valor;
 	public $img;	
 	
-	function item($item)
-	{
-		if (file_exists($item.'.xml'))
+	function item($id_item,$id_tipo = 0)
+	{	
+		if($id_tipo == 0)
 		{
-		$xml = simplexml_load_file($item.'.xml');
+			$id_tipo = sql ("SELECT type FROM items WHERE id_item = " . $id_item);
+		}
+		if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $id_tipo.'.xml'))
+		{
+		$xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $id_tipo.'.xml');
 		//print_r($xml);
 		} 
 		else
 		{
-			exit('Error abriendo '.$item.'.xml.');
+			exit('Error abriendo '.$id_tipo.'.xml.');
 		}
 		
 		$this->id_item = $xml->id[0];
 		$this->nombre_item = $this->getNombrei18n((string) $xml->nombre_clave);
 		$this->peso = $xml->peso[0];
-		//Valor de venta es valor/2 al precio de compra
+		//Valor de venta es valor/2 al precio de compra (Ah si?)
 		$this->valor = $xml->valor[0]/2;
 		$this->img = $xml->img[0];
 		//Si el item dispone de ataque, se le añade
@@ -70,7 +74,7 @@ class item
 	}
 	public function getImg()
 	{
-		return (string) '/desnortado/img/'.$this->img;
+		return (string) './img/'.$this->img;
 	}
 
 }

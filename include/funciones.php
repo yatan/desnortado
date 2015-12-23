@@ -16,6 +16,7 @@ sql($sql): Devuelve una unica cosa si en el resultado solo habia una fila y una 
 enviar_mail($destino, $nick): Pues eso
 check_lang($lengua): Carga en la variable de session $_SESSION["lang"] el idioma del usuario. Compruebo que el archivo esxiste en ./i18n/lang.php
 getString($text): Coge el texto de id $text del diccionario del user
+ItemsInMap($x_centro,$y_centro,$x_rango = 0,$y_rango = 0): Devuelve un array[x][y] con un array de los objetos_item de los item que hay en cada casilla[x][y] en el centro y rango indicados.
 */
 
 function mysqli_online() {
@@ -166,6 +167,7 @@ function ItemsInMap($x_centro,$y_centro,$x_rango = 0,$y_rango = 0){
 	//Coge la "lista" de casillas 
 	//Output del tipo $items[x][y][i] con i de 0 a los items que haya
 	
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/objeto_item.php");
 	$items = array();
 	
 	
@@ -174,7 +176,11 @@ function ItemsInMap($x_centro,$y_centro,$x_rango = 0,$y_rango = 0){
        for ($x = $x_centro - $x_rango; $x <= $x_centro + $x_rango; $x++) { 
            echo "<div class=\"Cell\">";
            echo "<p>[$x] [$y]</p>";
-		   $items[$x][$y] = sql("SELECT * FROM ownership WHERE x = $x AND y = $y");
+		   $items_prov = sql("SELECT * FROM ownership WHERE x = $x AND y = $y");
+		   foreach($items_prov as $it)
+		   {//Por cada item en la casilla hacer el objeto y meterlo en el array de vuelta
+			   $items[$x][$y][] = new item($it["item_id"]);
+		   }
            echo "</div>";
        }
        echo "</div>";

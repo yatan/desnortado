@@ -18,9 +18,11 @@
        for ($x = $x_centro - $x_rango; $x <= $x_centro + $x_rango; $x++) { 
            echo "<div class=\"Cell\">";
            echo "<p>[$x] [$y]</p>";
-		   foreach($items[$x][$y] as $item)
-		   {
-			   print"item";
+		   if(isset($items[$x][$y])){
+			   foreach($items[$x][$y] as $item)
+			   {
+				   echo '<img src = "'.$item->getImg().'" alt = "'.$item->getNombre().'" >';
+			   }
 		   }
            echo "</div>";
        }
