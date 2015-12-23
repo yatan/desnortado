@@ -162,4 +162,25 @@ function getString($text) {
     return $i18n_array[$text];
 }  
 
+function ItemsInMap($x_centro,$y_centro,$x_rango = 0,$y_rango = 0){
+	//Coge la "lista" de casillas 
+	//Output del tipo $items[x][y][i] con i de 0 a los items que haya
+	
+	$items = array();
+	
+	
+	for ($y = $y_centro + $y_rango; $y >= $y_centro - $y_rango; $y--) {
+       echo "<div class=\"Row\">";
+       for ($x = $x_centro - $x_rango; $x <= $x_centro + $x_rango; $x++) { 
+           echo "<div class=\"Cell\">";
+           echo "<p>[$x] [$y]</p>";
+		   $items[$x][$y] = sql("SELECT * FROM ownership WHERE x = $x AND y = $y");
+           echo "</div>";
+       }
+       echo "</div>";
+    }
+	
+	return $items;
+}
+
 ?>
