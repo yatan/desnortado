@@ -82,6 +82,10 @@ class item
 	{
 		return (string) './img/'.$this->icon;
 	}
+	public function getPassive()
+	{
+		return $xml->pasivo->inter;
+	}
 
 }
 

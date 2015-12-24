@@ -8,4 +8,14 @@
 	<valor>100</valor>
 	<img>axe.png</img>
 	<icon>icon_axe.png</icon>
+	<pasivo>
+		<inter>
+			<origen>0</origen>
+			<id>1</id> 
+		</inter>
+		<inter>
+			<origen>0</origen>
+			<id>2</id> 
+		</inter>
+	</pasivo>
 </item>

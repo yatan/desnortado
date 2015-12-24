@@ -189,4 +189,11 @@ function ItemsInMap($x_centro,$y_centro,$x_rango = 0,$y_rango = 0){
 	return $items;
 }
 
+function InterPosible($id_inter,$id_item_activo,$id_item_pasivo)
+{
+	if($id_item_activo == 0){
+		return true; #Comodin para cosas que hace el jugador.
+	}
+}
+
 ?>
