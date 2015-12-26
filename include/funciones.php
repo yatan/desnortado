@@ -17,6 +17,8 @@ enviar_mail($destino, $nick): Pues eso
 check_lang($lengua): Carga en la variable de session $_SESSION["lang"] el idioma del usuario. Compruebo que el archivo esxiste en ./i18n/lang.php
 getString($text): Coge el texto de id $text del diccionario del user
 ItemsInMap($x_centro,$y_centro,$x_rango = 0,$y_rango = 0): Devuelve un array[x][y] con un array de los objetos_item de los item que hay en cada casilla[x][y] en el centro y rango indicados.
+InteraccionesActivas($id_player): Devuelve un array de arrays con el id del item origen de una interaccion el id TIPO final y el tipo de interaccion [origen,destino,inter_id] sin filtrar condiciones
+InteraccionesPasivas($x_centro,$y_centro,$x_rango,$y_rango): Devuelve un array de arrays [origen,destino,inter_id] con el TIPO de objeto origen de la interaccion. El ID DEL ITEM del objeto destino de wla interaccion y el TIPO de interaccion. Sin filtrar condiciones.
 */
 
 function mysqli_online() {
@@ -172,20 +174,14 @@ function ItemsInMap($x_centro,$y_centro,$x_rango = 0,$y_rango = 0){
 	
 	
 	for ($y = $y_centro + $y_rango; $y >= $y_centro - $y_rango; $y--) {
-       echo "<div class=\"Row\">";
        for ($x = $x_centro - $x_rango; $x <= $x_centro + $x_rango; $x++) { 
-           echo "<div class=\"Cell\">";
-           echo "<p>[$x] [$y]</p>";
 		   $items_prov = sql("SELECT * FROM ownership WHERE x = $x AND y = $y");
 		   foreach($items_prov as $it)
 		   {//Por cada item en la casilla hacer el objeto y meterlo en el array de vuelta
 			   $items[$x][$y][] = new item($it["item_id"]);
 		   }
-           echo "</div>";
        }
-       echo "</div>";
     }
-	
 	return $items;
 }
 
@@ -194,6 +190,65 @@ function InterPosible($id_inter,$id_item_activo,$id_item_pasivo)
 	if($id_item_activo == 0){
 		return true; #Comodin para cosas que hace el jugador.
 	}
+	return false;
+}
+
+function InteraccionesActivas($id_player)
+{
+	//ids y tipos de objetos del usuario
+	$invent = sql("SELECT items.id_item, items.type FROM items INNER JOIN ownership ON ( items.id_item = ownership.item_id AND ownership.owner_id = ".$id_player.")");
+
+	//Para cada objeto sacamos las acciones ACTIVAS
+	$activos = array();
+	foreach($invent as $item)
+	{
+		$obj_item = new item($item['id_item'],$item['type']);
+		$inters = $obj_item->getActive();
+		#Montar en el array
+		foreach($inters as $inter)
+		{
+			$activos[] = array("origen" => $item['id_item'], "destino" => (string) $inter->destino, "inter_id" => (string) $inter->id);
+		}
+	}
+
+return $activos;
+}
+
+function InteraccionesPasivas($x_centro,$y_centro,$x_rango,$y_rango)
+{
+		$xmin = $x_centro - $x_rango;
+	$xmax = $x_centro + $x_rango;
+	$ymin = $y_centro - $y_rango;
+	$ymax = $y_centro + $y_rango;
+		$sql = "SELECT items.id_item, items.type FROM items INNER JOIN ownership ON ( items.id_item = ownership.item_id AND ownership.owner_id = 0 ) WHERE (ownership.X BETWEEN ".$xmin." AND ".$xmax.") AND (ownership.Y BETWEEN ".$ymin." AND ".$ymax.")";
+	$invent = sql_error($sql);#Usamos error pq no queremos el formateo de sql cuando hay solo un item
+	//Para cada objeto sacamos las acciones PASIVAS
+	$pasivos = array();
+	foreach($invent as $item)
+	{
+		$obj_item = new item($item['id_item'],$item['type']);
+		$inters = $obj_item->getPassive();
+		#Montar en el array
+		foreach($inters as $inter)
+		{
+			$pasivos[] = array("origen" => (string) $inter->origen, "destino" => $item['id_item'] , "inter_id" => (string) $inter->id);
+		}
+	}
+
+return $pasivos;
+}
+
+function ListarInteracciones()
+{//Dada la posicion e inventario de un jugador listar las interacciones posibles
+//TBD: De momento ignoramos el inventario.
+
+include_once("./usuarios/objeto_usuario.php");
+//Donde estoy?
+
+$usuario = new usuario($_SESSION['id_usuario']);
+//Items en el mapa pq mas lejos no importa
+$items = ItemsInMap($usuario->X,$usuario->Y,$usuario->X_rango,$usuario->Y_rango);
+
 }
 
 ?>
