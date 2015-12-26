@@ -206,8 +206,8 @@ function InteraccionesActivas($id_player)
 		$inters = $obj_item->getActive();
 		#Montar en el array
 		foreach($inters as $inter)
-		{
-			$activos[] = array("origen" => $item['id_item'], "destino" => (string) $inter->destino, "inter_id" => (string) $inter->id);
+		{	//Item activo: su id y tipo. Id del tipo al que haria un interaccion (nulo pq aun no se sabe), el tipo y el id de interaccion. Como cicla salen todos los destinos posibles.
+			$activos[] = array("origen" => $item['id_item'], "origen_tipo" => $item["type"],"destino" => "", "destino_tipo" => (string) $inter->destino,"inter_id" => (string) $inter->id);
 		}
 	}
 
@@ -230,8 +230,8 @@ function InteraccionesPasivas($x_centro,$y_centro,$x_rango,$y_rango)
 		$inters = $obj_item->getPassive();
 		#Montar en el array
 		foreach($inters as $inter)
-		{
-			$pasivos[] = array("origen" => (string) $inter->origen, "destino" => $item['id_item'] , "inter_id" => (string) $inter->id);
+		{	//Item pasivo. Id (nulo pq no se conoce aun) del item que le realiza la accion. El tipo que deberia tener. Somos el destino, id y tipo de este item. Tipo de interaccion.
+			$pasivos[] = array("origen" => "", "origen_tipo" => (string) $inter->origen, "destino" => $item['id_item'] , "destino_tipo" => $item['type'],  "inter_id" => (string) $inter->id);
 		}
 	}
 
