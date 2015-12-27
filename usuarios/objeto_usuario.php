@@ -12,9 +12,9 @@ class usuario
     public $id_usuario;
 	public $nick;
 	public $X;
+	public $Y;
 	public $X_rango;
 	public $Y_rango;
-	public $Y;
 	public $HP;
 	public $AP;
 

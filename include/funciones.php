@@ -3,6 +3,7 @@
 session_start();
 include_once("config.php");
 include_once('config_variables.php');
+
 select_lang();
 
 /*
@@ -17,8 +18,9 @@ enviar_mail($destino, $nick): Pues eso
 check_lang($lengua): Carga en la variable de session $_SESSION["lang"] el idioma del usuario. Compruebo que el archivo esxiste en ./i18n/lang.php
 getString($text): Coge el texto de id $text del diccionario del user
 ItemsInMap($x_centro,$y_centro,$x_rango = 0,$y_rango = 0): Devuelve un array[x][y] con un array de los objetos_item de los item que hay en cada casilla[x][y] en el centro y rango indicados.
-InteraccionesActivas($id_player): Devuelve un array de arrays con el id del item origen de una interaccion el id TIPO final y el tipo de interaccion [origen,destino,inter_id] sin filtrar condiciones
-InteraccionesPasivas($x_centro,$y_centro,$x_rango,$y_rango): Devuelve un array de arrays [origen,destino,inter_id] con el TIPO de objeto origen de la interaccion. El ID DEL ITEM del objeto destino de wla interaccion y el TIPO de interaccion. Sin filtrar condiciones.
+InteraccionesActivas($id_player): Devuelve un array de arrays con el id del item origen, stu tipoo y el tipo de interaccion [origen,oringe_tipo,inter_id] sin filtrar condiciones
+InteraccionesPasivas($x_centro,$y_centro,$x_rango,$y_rango): Devuelve un array de arrays [destino,destino_tipo,inter_id] El ID DEL ITEM del objeto destino de la interaccion el TIPO DE ITEM y el TIPO de interaccion. Sin filtrar condiciones.
+ListarInteracciones($id_usuario): Usa las dos funciones anteriores y muestra los objetos que pueden generar una interaccion con otros objetos en el rango de accion del jugador PERO sin filtrar parametros ni nada.
 */
 
 function mysqli_online() {
@@ -207,7 +209,7 @@ function InteraccionesActivas($id_player)
 		#Montar en el array
 		foreach($inters as $inter)
 		{	//Item activo: su id y tipo. Id del tipo al que haria un interaccion (nulo pq aun no se sabe), el tipo y el id de interaccion. Como cicla salen todos los destinos posibles.
-			$activos[] = array("origen" => $item['id_item'], "origen_tipo" => $item["type"],"destino" => "", "destino_tipo" => (string) $inter->destino,"inter_id" => (string) $inter->id);
+			$activos[] = array("origen" => $item['id_item'], "origen_tipo" => $item["type"],"destino" => "", "destino_tipo" => (string) "","inter_id" => (string) $inter->id);
 		}
 	}
 
@@ -231,24 +233,34 @@ function InteraccionesPasivas($x_centro,$y_centro,$x_rango,$y_rango)
 		#Montar en el array
 		foreach($inters as $inter)
 		{	//Item pasivo. Id (nulo pq no se conoce aun) del item que le realiza la accion. El tipo que deberia tener. Somos el destino, id y tipo de este item. Tipo de interaccion.
-			$pasivos[] = array("origen" => "", "origen_tipo" => (string) $inter->origen, "destino" => $item['id_item'] , "destino_tipo" => $item['type'],  "inter_id" => (string) $inter->id);
+			$pasivos[] = array("origen" => "", "origen_tipo" => "", "destino" => $item['id_item'] , "destino_tipo" => $item['type'],  "inter_id" => (string) $inter->id);
 		}
 	}
 
-return $pasivos;
+	return $pasivos;
 }
 
-function ListarInteracciones()
+function ListarInteracciones($id_usuario)
 {//Dada la posicion e inventario de un jugador listar las interacciones posibles
-//TBD: De momento ignoramos el inventario.
 
-include_once("./usuarios/objeto_usuario.php");
-//Donde estoy?
+	$jugador = new usuario($id_usuario);
 
-$usuario = new usuario($_SESSION['id_usuario']);
-//Items en el mapa pq mas lejos no importa
-$items = ItemsInMap($usuario->X,$usuario->Y,$usuario->X_rango,$usuario->Y_rango);
+	$activos = InteraccionesActivas(1);
+	$pasivos = InteraccionesPasivas($jugador->X,$jugador->Y,$jugador->X_rango,$jugador->Y_rango); //TBD: Esto deberia depender del player
 
+	$posible = array();
+
+	foreach($activos as $activo)
+	{
+		foreach($pasivos as $pasivo)
+		{
+			if($activo['inter_id'] == $pasivo['inter_id'])
+			{
+				$posible[] = array("origen" => $activo['origen'], "origen_tipo" => $activo['origen_tipo'], "destino" => $pasivo['destino'] , "destino_tipo" => $pasivo['destino_tipo'],  "inter_id" => $pasivo['inter_id']);
+			}
+		}
+	}
+return $posible;
 }
 
 ?>
