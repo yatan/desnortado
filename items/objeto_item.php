@@ -6,6 +6,7 @@ select_lang();
 class item
 {
 	public $id_item;
+	public $tipo;
 	public $nombre_item;
 	public $descripcion;
 	public $ataque;
@@ -23,7 +24,6 @@ class item
 		if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $id_tipo.'.xml'))
 		{
 		$xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $id_tipo.'.xml');
-		//print_r($xml);
 		} 
 		else
 		{
@@ -31,6 +31,7 @@ class item
 		}
 		
 		$this->id_item = $xml->id[0];
+		$this->tipo = $id_tipo;
 		$this->nombre_item = $this->getNombrei18n((string) $xml->nombre_clave);
 		$this->peso = $xml->peso[0];
 		//Valor de venta es valor/2 al precio de compra (Ah si?)
@@ -81,6 +82,30 @@ class item
 	public function getIcon()
 	{
 		return (string) './img/'.$this->icon;
+	}
+	public function getActive()
+	{
+		if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $this->tipo.'.xml'))
+		{
+		$xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $this->tipo.'.xml');
+		} 
+		else
+		{
+			exit('Error abriendo '.$this->tipo.'.xml.');
+		}
+		return $xml->activo->inter;
+	}
+	public function getPassive()
+	{
+		if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $this->tipo.'.xml'))
+		{
+		$xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $this->tipo.'.xml');
+		} 
+		else
+		{
+			exit('Error abriendo '.$this->tipo.'.xml.');
+		}
+		return $xml->pasivo->inter;
 	}
 
 }

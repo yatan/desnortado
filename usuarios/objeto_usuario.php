@@ -12,6 +12,8 @@ class usuario
     public $id_usuario;
 	public $nick;
 	public $X;
+	public $X_rango;
+	public $Y_rango;
 	public $Y;
 	public $HP;
 	public $AP;
@@ -29,6 +31,8 @@ class usuario
 		$this->nick = $usuario['nick'];
 		$this->X = $usuario['X'];
 		$this->Y = $usuario['Y'];
+		$this->X_rango = 2;
+		$this->Y_rango = 2;
 		$this->HP = $usuario['HP'];
 		$this->AP = $usuario['AP'];
 		}
