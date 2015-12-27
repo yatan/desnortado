@@ -410,4 +410,7 @@ $i18n_array['solicitar'] = "Solicitar";
 //Items
 $i18n_array['hacha'] = "Hacha";
 $i18n_array['hacha_desc'] ="Pequeña hacha que puedes usarla con una mano para hacer algo de daño.";
+
+$i18n_array['arbol'] = "Arbol";
+$i18n_array['arbol_desc'] ="Arbol que al cortarlo puede dar madera.";
 ?>

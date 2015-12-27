@@ -1,6 +1,10 @@
 <?php
-
-//include("../include/funciones.php");
+/*
+    Acciones:
+                1 - Cortar
+ 
+*/
+include_once($_SERVER['DOCUMENT_ROOT'] . "/desnortado/include/funciones.php");
 select_lang();
 
 class item
@@ -14,25 +18,24 @@ class item
 	public $valor;
 	public $img;	
 	public $icon;
+    public $acciones;
+    public $requiere;
 	
-	function item($id_item,$id_tipo = 0)
+	function item($id_item)
 	{	
-		if($id_tipo == 0)
+		if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $id_item.'.xml'))
 		{
-			$id_tipo = sql ("SELECT type FROM items WHERE id_item = " . $id_item);
-		}
-		if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $id_tipo.'.xml'))
-		{
-		$xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $id_tipo.'.xml');
+		$xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $id_item.'.xml');
 		} 
 		else
 		{
-			exit('Error abriendo '.$id_tipo.'.xml.');
+			exit('Error abriendo '.$id_item.'.xml.');
 		}
 		
 		$this->id_item = $xml->id[0];
-		$this->tipo = $id_tipo;
+		$this->tipo = $id_item;
 		$this->nombre_item = $this->getNombrei18n((string) $xml->nombre_clave);
+        $this->descripcion = $this->getDescri18n((string) $xml->descripcion);
 		$this->peso = $xml->peso[0];
 		//Valor de venta es valor/2 al precio de compra (Ah si?)
 		$this->valor = $xml->valor[0]/2;
@@ -41,7 +44,13 @@ class item
 		//Si el item dispone de ataque, se le añade
 		if(isset($xml->ataque[0]))
 			$this->ataque = $xml->ataque[0];
-		$this->descripcion = $this->getDescri18n((string) $xml->descripcion);
+ 		//Si tiene acciones el item
+        if(isset($xml->acciones[0]))
+			$this->acciones = $xml->acciones[0];    
+        //Si el item requiere de alguna accion
+        if(isset($xml->requiere[0]))
+			$this->requiere = $xml->requiere[0];
+            
 	}
 	
 	function getNombrei18n($nombre)
@@ -77,36 +86,21 @@ class item
 	}
 	public function getImg()
 	{
-		return (string) './img/'.$this->img;
+		return (string) '/desnortado/img/'.$this->img;
 	}
 	public function getIcon()
 	{
-		return (string) './img/'.$this->icon;
+		return (string) '/desnortado/img/'.$this->icon;
 	}
-	public function getActive()
-	{
-		if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $this->tipo.'.xml'))
-		{
-		$xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $this->tipo.'.xml');
-		} 
-		else
-		{
-			exit('Error abriendo '.$this->tipo.'.xml.');
-		}
-		return $xml->activo->inter;
-	}
-	public function getPassive()
-	{
-		if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $this->tipo.'.xml'))
-		{
-		$xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $this->tipo.'.xml');
-		} 
-		else
-		{
-			exit('Error abriendo '.$this->tipo.'.xml.');
-		}
-		return $xml->pasivo->inter;
-	}
+    public function getAcciones()
+    {
+        return (string) $this->acciones;
+    }
+    
+    public function getRequiere()
+    {
+        return (string) $this->requiere;
+    }
 
 }
 

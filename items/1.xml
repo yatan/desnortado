@@ -8,24 +8,5 @@
 	<valor>100</valor>
 	<img>axe.png</img>
 	<icon>icon_axe.png</icon>
-	<activo>
-		<inter>
-			<destino>0</destino>
-			<id>3</id> 
-		</inter>
-		<inter>
-			<destino>0</destino>
-			<id>4</id> 
-		</inter>
-	</activo>
-	<pasivo>
-		<inter>
-			<origen>0</origen>
-			<id>1</id> 
-		</inter>
-		<inter>
-			<origen>0</origen>
-			<id>2</id> 
-		</inter>
-	</pasivo>
+	<acciones>Cortar</acciones>
 </item>

@@ -7,6 +7,7 @@
         <p>Mapa</p>
     </div>
     <?php
+    include_once("index_head.php");
 	include ("./include/funciones.php");
 	$x_centro = 0;
 	$y_centro = 0;
@@ -21,7 +22,7 @@
 		   if(isset($items[$x][$y])){
 			   foreach($items[$x][$y] as $item)
 			   {
-				   echo '<img src = "'.$item->getIcon().'" alt = "'.$item->getNombre().'" >';
+				   echo '<img src = "'.$item->getIcon().'" alt = "'.$item->id_item.'" >';
 			   }
 		   }
            echo "</div>";
@@ -39,3 +40,13 @@
 </div>    
 
 </div>
+
+<div id = "info_celda">
+    
+</div>    
+
+<script>
+$( "img" ).click(function() {
+    $("#info_celda").load("items/test_item.php?id=" + $( this ).attr("alt"));
+});
+</script>
