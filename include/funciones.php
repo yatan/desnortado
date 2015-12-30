@@ -233,9 +233,12 @@ function InteraccionesPasivas($x_centro,$y_centro,$x_rango,$y_rango)
 		$obj_item = new item($item['id_item'],$item['type']);
 		$inters = $obj_item->getPassive();
 		#Montar en el array
-		foreach($inters as $inter)
-		{	//Item pasivo. Id (nulo pq no se conoce aun) del item que le realiza la accion. El tipo que deberia tener. Somos el destino, id y tipo de este item. Tipo de interaccion.
-			$pasivos[] = array("origen" => "", "origen_tipo" => "", "destino" => $item['id_item'] , "destino_tipo" => $item['type'],  "inter_id" => (string) $inter->id);
+		if(!is_null($inters))
+		{
+			foreach($inters as $inter)
+			{	//Item pasivo. Id (nulo pq no se conoce aun) del item que le realiza la accion. El tipo que deberia tener. Somos el destino, id y tipo de este item. Tipo de interaccion.
+				$pasivos[] = array("origen" => "", "origen_tipo" => "", "destino" => $item['id_item'] , "destino_tipo" => $item['type'],  "inter_id" => (string) $inter->id);
+			}
 		}
 	}
 
