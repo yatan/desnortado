@@ -177,8 +177,7 @@ function ItemsInMap($x_centro,$y_centro,$x_rango = 0,$y_rango = 0){
 	include_once($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/objeto_item.php");
 	$items = array();
 	
-	$items_prov = sql("SELECT * FROM ownership WHERE mapa=0");
-    //var_dump($items_prov);
+	$items_prov = sql("SELECT * FROM ownership WHERE owner_id = 0");//Items del suelo solo
     
     foreach($items_prov as $it)
     {//Por cada item en la casilla hacer el objeto y meterlo en el array de vuelta
