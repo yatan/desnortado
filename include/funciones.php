@@ -177,16 +177,16 @@ function ItemsInMap($x_centro,$y_centro,$x_rango = 0,$y_rango = 0){
 	include_once($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/objeto_item.php");
 	$items = array();
 	
-	
-	for ($y = $y_centro + $y_rango; $y >= $y_centro - $y_rango; $y--) {
-       for ($x = $x_centro - $x_rango; $x <= $x_centro + $x_rango; $x++) { 
-		   $items_prov = sql("SELECT * FROM ownership WHERE x = $x AND y = $y");
-		   foreach($items_prov as $it)
-		   {//Por cada item en la casilla hacer el objeto y meterlo en el array de vuelta
-			   $items[$x][$y][] = new item($it["item_id"]);
-		   }
-       }
+	$items_prov = sql("SELECT * FROM ownership WHERE mapa=0");
+    //var_dump($items_prov);
+    
+    foreach($items_prov as $it)
+    {//Por cada item en la casilla hacer el objeto y meterlo en el array de vuelta
+        $items[$it['X']][$it['Y']][] = new item($it["item_id"]);
+        //var_dump($it['item_id']);
     }
+       
+   
 	return $items;
 }
 
