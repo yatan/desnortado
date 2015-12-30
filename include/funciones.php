@@ -207,9 +207,11 @@ function InteraccionesActivas($id_player)
 		$obj_item = new item($item['id_item'],$item['type']);
 		$inters = $obj_item->getActive();
 		#Montar en el array
-		foreach($inters as $inter)
-		{	//Item activo: su id y tipo. Id del tipo al que haria un interaccion (nulo pq aun no se sabe), el tipo y el id de interaccion. Como cicla salen todos los destinos posibles.
-			$activos[] = array("origen" => $item['id_item'], "origen_tipo" => $item["type"],"destino" => "", "destino_tipo" => (string) "","inter_id" => (string) $inter->id);
+		if(!is_null($inters)){
+			foreach($inters as $inter)
+			{	//Item activo: su id y tipo. Id del tipo al que haria un interaccion (nulo pq aun no se sabe), el tipo y el id de interaccion. Como cicla salen todos los destinos posibles.
+				$activos[] = array("origen" => $item['id_item'], "origen_tipo" => $item["type"],"destino" => "", "destino_tipo" => (string) "","inter_id" => (string) $inter->id);
+			}
 		}
 	}
 

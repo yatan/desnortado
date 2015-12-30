@@ -1,0 +1,15 @@
+<?xml version='1.0' standalone='yes'?>
+<item>
+	<id>2</id>
+	<nombre_clave>arbol</nombre_clave>
+	<descripcion>arbol_desc</descripcion>
+	<peso>5</peso>
+	<valor>100</valor>
+	<img>tree.png</img>
+	<icon>icon_tree.png</icon>
+	<pasivo>
+		<inter>
+			<id>2</id> 
+		</inter>
+	</pasivo>
+</item>

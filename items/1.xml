@@ -11,21 +11,13 @@
 	<activo>
 		<inter>
 			<destino>0</destino>
-			<id>1</id> 
-		</inter>
-		<inter>
-			<destino>0</destino>
-			<id>4</id> 
+			<id>2</id> 
 		</inter>
 	</activo>
 	<pasivo>
 		<inter>
 			<origen>0</origen>
 			<id>1</id> 
-		</inter>
-		<inter>
-			<origen>0</origen>
-			<id>2</id> 
 		</inter>
 	</pasivo>
 </item>
