@@ -23,14 +23,14 @@ class item
 		}
 		if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $id_tipo.'.xml'))
 		{
-		$xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $id_tipo.'.xml');
+			$xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $id_tipo.'.xml');
 		} 
 		else
 		{
 			exit('Error abriendo '.$id_tipo.'.xml.');
 		}
 		
-		$this->id_item = $xml->id[0];
+		$this->id_item = $id_item;
 		$this->tipo = $id_tipo;
 		$this->nombre_item = $this->getNombrei18n((string) $xml->nombre_clave);
 		$this->peso = $xml->peso[0];
@@ -107,7 +107,14 @@ class item
 		}
 		return $xml->pasivo->inter;
 	}
-
+	public function getX()
+	{
+		return sql('SELECT X FROM ownership WHERE item_id = '.$this->id_item);
+		
+	}
+	public function getY(){
+		return sql('SELECT Y FROM ownership WHERE item_id = '.$this->id_item);
+	}
 }
 
 ?>

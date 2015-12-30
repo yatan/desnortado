@@ -21,6 +21,9 @@ ItemsInMap($x_centro,$y_centro,$x_rango = 0,$y_rango = 0): Devuelve un array[x][
 InteraccionesActivas($id_player): Devuelve un array de arrays con el id del item origen, stu tipoo y el tipo de interaccion [origen,oringe_tipo,inter_id] sin filtrar condiciones
 InteraccionesPasivas($x_centro,$y_centro,$x_rango,$y_rango): Devuelve un array de arrays [destino,destino_tipo,inter_id] El ID DEL ITEM del objeto destino de la interaccion el TIPO DE ITEM y el TIPO de interaccion. Sin filtrar condiciones.
 ListarInteracciones($id_usuario): Usa las dos funciones anteriores y muestra los objetos que pueden generar una interaccion con otros objetos en el rango de accion del jugador PERO sin filtrar parametros ni nada.
+function FiltroInteracciones($posibles): Coge una array de interacciones y deja solo los posibles.
+function CondicionesInteracciones($inter): Dada una interaccion, comprueba si es posible.
+function Norma1($x1,$y1,$x2,$y2): Calcula distancia en norma 1 
 */
 
 function mysqli_online() {
@@ -266,6 +269,43 @@ function ListarInteracciones($id_usuario)
 		}
 	}
 return $posible;
+}
+function FiltroInteracciones($posibles)
+{//Coge una array de interacciones y deja solo los posibles.
+	$reales = array();
+	foreach($posibles as $inter)
+	{
+		if(CondicionesInteracciones($inter))
+		{
+			$reales[] = $inter;
+		}
+	}
+	return $reales;
+}
+function CondicionesInteracciones($inter)
+{//Dada una interaccion, comprueba si es posible.
+//Debe devolver SIEMPRE true o false.
+	switch($inter['inter_id'])
+	{
+	case 1: //Coger
+		return true;
+		break;
+	case 2: //Cortar
+		$activo = new item($inter['origen'],$inter['origen_tipo']);
+		$pasivo = new item($inter['destino'],$inter['destino_tipo']);
+		if(Norma1($activo->getX(),$activo->getY(),$pasivo->getX(),$pasivo->getY()) <= 1) //Si esta en casilla colindantes o en la misma
+		{
+			return true;
+		}else{
+			return false;
+		}
+		break;
+	}
+}
+
+function Norma1($x1,$y1,$x2,$y2)
+{//Calcula distancia en norma 1 
+	return abs($x1-$x2) + abs($y1-$y2);
 }
 
 ?>
