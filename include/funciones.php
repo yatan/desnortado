@@ -24,6 +24,7 @@ ListarInteracciones($id_usuario): Usa las dos funciones anteriores y muestra los
 function FiltroInteracciones($posibles): Coge una array de interacciones y deja solo los posibles.
 function CondicionesInteracciones($inter): Dada una interaccion, comprueba si es posible.
 function Norma1($x1,$y1,$x2,$y2): Calcula distancia en norma 1 
+function FrasesAccion($id): Imprime los links para realizar las acciones disponibles del jugador id
 */
 
 function mysqli_online() {
@@ -305,6 +306,17 @@ function CondicionesInteracciones($inter)
 function Norma1($x1,$y1,$x2,$y2)
 {//Calcula distancia en norma 1 
 	return abs($x1-$x2) + abs($y1-$y2);
+}
+
+function FrasesAccion($id){
+	$reales = FiltroInteracciones(ListarInteracciones($id));
+	
+	foreach($reales as $inter)
+	{
+		$item_or = new item($inter['origen']);
+		$item_de = new item($inter['destino']);
+		echo "<a href='accion.php?or=".$inter['origen']."&dest=".$inter['destino']."&inter=".$inter['inter_id']."'>".getString('inter_'.$inter['inter_id']."_or")." <img src='".$item_de->getIcon()."'> usando <img src='".$item_or->getIcon()."'></a><br>";
+	}
 }
 
 ?>

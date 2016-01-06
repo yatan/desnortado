@@ -1,4 +1,5 @@
 <?php   
+//Lo comentarios de /**/ son frases heredadas de BoN, si se ve que se necesita alguna descomentarla y cuando pasemos a master se borra lo comentado.
 		//REGISTRO
 
 $i18n_array['signup_title'] = "Formulario de Registro";
@@ -16,7 +17,7 @@ $i18n_array['signup_mail_send_form'] = "Enviar formulario";
 $i18n_array['signup_mail_error'] = "Se produjo un error al conectar con el servidor de mail.";
 
                 //GENERICAS
-
+/*
 $i18n_array['name_taken'] = "Ese nombre esta ocupado.";
 $i18n_array['not_enough_gold']= ' No tienes oro suficiente.';
 $i18n_array['already_affiliated'] = 'Ya estas en un partido.';
@@ -65,7 +66,7 @@ $i18n_array['type'] = 'Tipo';
 $i18n_array['nunca'] = ' Nunca';
 $i18n_array['days'] = 'días';
  		//LOGIN
-
+*/
 $i18n_array['login_texto'] = "Birth of Nations es un juego online libre de estrategia política; económica y social. El desarrollo del juego se realiza de forma comunitaria; y sus propios jugadores deciden cual es el rumbo que toma el proyecto.";
 $i18n_array['login_nonick'] = "Falta el usuario";
 $i18n_array['login_nopass'] = "Falta la contraseña";
@@ -75,11 +76,11 @@ $i18n_array['login_banned'] = "Has sido baneado";
 $i18n_array['login_recovery'] = "Recuperar password"; 
 
 		//FIRST LOGIN
-
+/*
 $i18n_array['first_login_title'] = "Bienvenido a Birth of Nations";
 $i18n_array['first_login_dialog'] = "Este es tu primer login al juego; selecciona tu destinación...</br>Blah; blah; blah";
 $i18n_array['first_login_travel'] = "Seleccionar pais destino:";
-
+*/
 //RECOVERY ACCOUNT
 
 
@@ -113,7 +114,7 @@ $i18n_array['mail_bienvenida2'] = "</p>
     <p> <a href='http://birthofnations.com/'>http://birthofnations.com/</a></p>
     <p>&nbsp;</p>";
 $i18n_array['mail_bienvenida_title'] = "Bienvenido a Birth of Nations";
-
+/*
 //Economico
 $i18n_array['Gold'] = 'Gold';
 $i18n_array['Poner_ofertas_trabajo'] = "Poner ofertas de trabajo";
@@ -339,7 +340,7 @@ $i18n_array['been_fired'] = ", has sido despedido";
 $i18n_array['moved_ok'] = "Has viajado correctamente";
 $i18n_array['you_are_in_a_country'] = "¡¡Ya estás en un país!!";
 $i18n_array['choose_a_region'] = "Selecciona una región";
-
+*/
 
 // VALIDATION_SIGNUP
 
@@ -352,7 +353,7 @@ $i18n_array['error_re_password'] = "Error al validad password";
 $i18n_array['user_again'] = "Ya existe un usuario con ese nick";
 $i18n_array['mail_again'] = "Ya existe un e-mail igual registrado";
 $i18n_array['ok'] = "ok";
-
+/*
 //MILITAR
 $i18n_array['military_strength'] = 'Fuerza: ';
 $i18n_array['military_range'] = 'Rango: ';
@@ -387,13 +388,13 @@ $i18n_array['logout'] = "Logout";
 // INDEX.PHP
 
 $i18n_array['last_wars'] = "Últimas guerras";
-
+*/
 
 //FORM_REFERER.PHP
 
 $i18n_array['mail_server_error'] = "El servidor de correo no esta disponible actualmente";
 $i18n_array['enviar_invitacion'] = "Enviar invitación";
-
+/*
 //mercado_economico.php
 $i18n_array['post_offer'] = "Publicar oferta";
 $i18n_array['offer'] = "Ofrecer";
@@ -406,7 +407,7 @@ $i18n_array['offer_lower_zero'] = "La cantidad introducida es menor que 0.01";
 $i18n_array['ciudadania'] = "Ciudadania";
 $i18n_array['pais_ciudadania'] = "Elige el pais donde quieres solicitar la ciudadania:";
 $i18n_array['solicitar'] = "Solicitar";
-
+*/
 //Items
 $i18n_array['hacha'] = "Hacha";
 $i18n_array['hacha_desc'] ="Pequeña hacha que puedes usarla con una mano para hacer algo de daño.";
@@ -414,4 +415,9 @@ $i18n_array['arbol'] = "Arbol";
 $i18n_array['arbol_desc'] ="Arbol que al cortarlo puede dar madera.";
 $i18n_array['mano'] = "Mano";
 $i18n_array['mano_desc'] ="Pequeña mano que puedes usarla con un brazo para hacer algo de daño.";
+
+//Interacciones
+
+$i18n_array['inter_1_or'] = 'Coger';
+$i18n_array['inter_2_or'] = 'Cortar';
 ?>
