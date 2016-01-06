@@ -2,7 +2,7 @@
 
 <html>
 <?php
-include("index_head.php"); 
+include_once("index_head.php"); 
 include_once("./include/funciones.php");
 //Comprobacion del servidor mysql
 if(mysqli_online2()==false)
@@ -28,7 +28,7 @@ if(!isset($_SESSION['id_usuario']))
 else
 {
     
-require("usuarios/objeto_usuario.php");
+require_once("usuarios/objeto_usuario.php");
 $objeto_usuario = new usuario($_SESSION['id_usuario']);
 
 //Si existe el idioma normalmente en la url del tipo /es/ lo establece como

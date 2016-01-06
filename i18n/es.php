@@ -415,6 +415,8 @@ $i18n_array['arbol'] = "Arbol";
 $i18n_array['arbol_desc'] ="Arbol que al cortarlo puede dar madera.";
 $i18n_array['mano'] = "Mano";
 $i18n_array['mano_desc'] ="Pequeña mano que puedes usarla con un brazo para hacer algo de daño.";
+$i18n_array['madera'] = "Madera";
+$i18n_array['madera_desc'] ="Pequeña madera que puedes usarla con un brazo para hacer algo de daño.";
 
 //Interacciones
 

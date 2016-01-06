@@ -10,10 +10,20 @@
 	<pasivo>
 		<inter>
 			<id>2</id>
+			<destruir>1</destruir>
 			<output>
 				<item_id>4</item_id>
-				<cantidad>2</cantidad>
+				<cantidad>1</cantidad>
+				<donde>suelo</donde>
 			</output>
+			<output>
+				<item_id>4</item_id>
+				<cantidad>1</cantidad>
+				<donde>inv</donde>
+			</output>
+		</inter>
+		<inter>
+			<id>9</id>
 		</inter>
 	</pasivo>
 </item>

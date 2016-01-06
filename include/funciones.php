@@ -314,8 +314,20 @@ function FrasesAccion($id){
 	{
 		$item_or = new item($inter['origen']);
 		$item_de = new item($inter['destino']);
-		echo "<a href='accion.php?or=".$inter['origen']."&dest=".$inter['destino']."&inter=".$inter['inter_id']."'>".getString('inter_'.$inter['inter_id']."_or")." <img src='".$item_de->getIcon()."'> usando <img src='".$item_or->getIcon()."'></a><br>";
+		echo "<a href='accion.php?or=".$inter['origen']."&or_ty=".$inter['origen_tipo']."&dest=".$inter['destino']."&de_ty=".$inter['destino_tipo']."&inter=".$inter['inter_id']."'>".getString('inter_'.$inter['inter_id']."_or")." <img src='".$item_de->getIcon()."'> usando <img src='".$item_or->getIcon()."'></a><br>";
 	}
+}
+
+function GetXML($id)
+{
+	$xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . "/desnortado/items/". $id.'.xml');
+	return $xml;
+}
+
+function DeleteItem($id)
+{
+	sql("DELETE FROM items WHERE id_item = ".$id,1);
+	sql("DELETE FROM ownership WHERE item_id = ".$id,1);
 }
 
 ?>
