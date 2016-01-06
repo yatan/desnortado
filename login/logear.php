@@ -1,7 +1,7 @@
 <?php
 
-include("../include/funciones.php");
-include("../usuarios/objeto_usuario.php");
+include_once("../include/funciones.php");
+include_once("../usuarios/objeto_usuario.php");
 select_lang();
 /*
  * To change this template, choose Tools | Templates

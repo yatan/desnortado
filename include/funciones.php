@@ -1,6 +1,6 @@
 <?php
 
-require_once("./usuarios/objeto_usuario.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/desnortado/usuarios/objeto_usuario.php");
 session_start();
 include_once("config.php");
 include_once('config_variables.php');
