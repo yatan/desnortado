@@ -1,6 +1,7 @@
 <?php
 
 include("../include/funciones.php");
+include("../usuarios/objeto_usuario.php");
 select_lang();
 /*
  * To change this template, choose Tools | Templates
@@ -36,6 +37,7 @@ if($consulta==false)//No concuerdan user y pass
 else
 {
     $_SESSION['id_usuario'] = $consulta;
+	$_SESSION['obj_usuario'] = new usuario($consulta);
     //Se pone la zona horaria bien
     date_default_timezone_set('Europe/Madrid');
     $hora = date("H:i:s"); 

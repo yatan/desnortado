@@ -11,8 +11,6 @@ class usuario
 {
     public $id_usuario;
 	public $nick;
-	public $X;
-	public $Y;
 	public $X_rango;
 	public $Y_rango;
 	public $HP;
@@ -29,8 +27,6 @@ class usuario
         else{
 		$this->id_usuario = $id;	
 		$this->nick = $usuario['nick'];
-		$this->X = $usuario['X'];
-		$this->Y = $usuario['Y'];
 		$this->X_rango = 2;
 		$this->Y_rango = 2;
 		$this->HP = $usuario['HP'];
@@ -84,6 +80,16 @@ function del_stat($stat) {
 		return $new_stat;
     }
     return false;
+}
+
+function X()
+{
+	return sql("SELECT X FROM players_game WHERE id = ".$this->id_usuario);
+}
+
+function Y()
+{
+	return sql("SELECT Y FROM players_game WHERE id = ".$this->id_usuario);
 }
 	
 }

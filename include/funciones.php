@@ -1,5 +1,6 @@
 <?php
 
+require_once("./usuarios/objeto_usuario.php");
 session_start();
 include_once("config.php");
 include_once('config_variables.php');
@@ -155,8 +156,6 @@ function check_lang($lengua) {
         $lengua = $lengua_defecto;
     }
 
-
-
     $_SESSION['i18n'] = $lengua;
     $_SESSION['i18n_default'] = $lengua_defecto;
 }
@@ -201,8 +200,8 @@ function InterPosible($id_inter,$id_item_activo,$id_item_pasivo)
 function InteraccionesActivas($id_player)
 {
 	//ids y tipos de objetos del usuario
-	$invent = sql("SELECT items.id_item, items.type FROM items INNER JOIN ownership ON ( items.id_item = ownership.item_id AND ownership.owner_id = ".$id_player.")");
-
+	$invent = sql_error("SELECT items.id_item, items.type FROM items INNER JOIN ownership ON ( items.id_item = ownership.item_id AND ownership.owner_id = ".$id_player.")");
+	#Usamos error pq no queremos el formateo de sql cuando hay solo un item
 	//Para cada objeto sacamos las acciones ACTIVAS
 	$activos = array();
 	foreach($invent as $item)
@@ -251,10 +250,10 @@ function InteraccionesPasivas($x_centro,$y_centro,$x_rango,$y_rango)
 function ListarInteracciones($id_usuario)
 {//Dada la posicion e inventario de un jugador listar las interacciones posibles
 
-	$jugador = new usuario($id_usuario);
+	$jugador = $_SESSION['obj_usuario'];
 
 	$activos = InteraccionesActivas(1);
-	$pasivos = InteraccionesPasivas($jugador->X,$jugador->Y,$jugador->X_rango,$jugador->Y_rango); //TBD: Esto deberia depender del player
+	$pasivos = InteraccionesPasivas($jugador->X(),$jugador->Y(),$jugador->X_rango,$jugador->Y_rango); 
 
 	$posible = array();
 
