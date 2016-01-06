@@ -1,0 +1,15 @@
+<?xml version='1.0' standalone='yes'?>
+<item>
+	<id>4</id>
+	<nombre_clave>madera</nombre_clave>
+	<descripcion>madera_desc</descripcion>
+	<peso>0</peso>
+	<valor>100</valor>
+	<img>madera.png</img>
+	<icon>icon_madera.png</icon>
+	<pasivo>
+		<inter>
+			<id>1</id>
+		</inter>
+	</pasivo>
+</item>

@@ -10,13 +10,11 @@
 	<icon>icon_axe.png</icon>
 	<activo>
 		<inter>
-			<destino>0</destino>
 			<id>2</id> 
 		</inter>
 	</activo>
 	<pasivo>
 		<inter>
-			<origen>0</origen>
 			<id>1</id> 
 		</inter>
 	</pasivo>

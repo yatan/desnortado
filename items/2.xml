@@ -9,7 +9,11 @@
 	<icon>icon_tree.png</icon>
 	<pasivo>
 		<inter>
-			<id>2</id> 
+			<id>2</id>
+			<output>
+				<item_id>4</item_id>
+				<cantidad>2</cantidad>
+			</output>
 		</inter>
 	</pasivo>
 </item>
