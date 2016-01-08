@@ -31,6 +31,7 @@ class usuario
 		$this->Y_rango = 2;
 		$this->HP = $usuario['HP'];
 		$this->AP = $usuario['AP'];
+		$this->status = $usuario['status'];
 		}
     }
 	

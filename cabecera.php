@@ -1,3 +1,4 @@
             <div id="top">
-            	&nbsp;
+            	Aqui hay una cabecera. 
+				¡Disfruta del juego!
             </div><!--top-->

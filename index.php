@@ -44,7 +44,7 @@ if(isset($_GET['lang']))
                     <?php include("cabecera.php"); ?><br>
                     <div id="status">
                         <center>
-                            <?php //include("status.php"); ?>
+                            <?php include("status.php"); ?>
                         </center>
                     </div>
                     <div id="menu">
