@@ -8,7 +8,7 @@
     </div>
     <?php
     include_once("index_head.php");
-	include ("./include/funciones.php");
+	include_once ("./include/funciones.php");
 	$x_centro = 0;
 	$y_centro = 0;
 	$x_rango = 2;
@@ -30,15 +30,7 @@
        echo "</div>";
     }
     ?>
-</div>
-
-<div class="Lateral_Derecho">
-    <h2>Menu</h2>
-    <p><a href="#">Mover</a></p>
-    <p><a href="#">Observar</a></p>
-    <p><a href="#">Coger</a></p>
-</div>    
-
+</div>  
 </div>
 
 <div id = "info_celda">

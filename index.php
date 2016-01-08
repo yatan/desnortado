@@ -53,35 +53,32 @@ if(isset($_GET['lang']))
                     <div id="cuerpo">
                         <center>
                         <?php
-                        
-                        if(isset($_GET['mod']))
+                        $to_load = "mapa"; #TBD: Qué debemos cargar en el mapa principal
+                        if(isset($to_load))
                         {    
-                            switch($_GET['mod'])
+                            switch($to_load)
 							{ // Este es el switch que carga el cuerpo principal
-                            case "ciudadania":
-                                include("usuarios/ciudadania.php");
+                            case "mapa":
+                                include("mapa.php");
                                 break;                             
                             default :
-                                die($_GET['mod']); //Default por si se pone algo incorrecto. Al futuro hay que cambiarlo
+                                die(); //Default por si se pone algo incorrecto. Al futuro hay que cambiarlo
                             }
                         }
-                        else
-                        {
-                            //Aqui va lo del centro de la pagina principal
-                            ?>
-                            <div id="columnas" style="padding: 10px; width: 58.4em; height: 25em;">
-                                <div id="columna1" style="float: right; width: 41em; height: 25em;">
-                                   <?php //include("columna1.php"); ?>
-                                </div>
+						//Aqui va lo de abajo
+						?>
+						<div id="columnas" style="padding: 10px; width: 58.4em; height: 25em;">
+							<div id="columna1" style="float: right; width: 41em; height: 25em;">
+							   <?php include("columna1.php"); ?>
+							</div>
 
-                                <div id="columna2" style="float: left; height: 25em; width: 17em;">
-                                   <?php //include("columna2.php"); ?>
-                                </div>
-                            </div><!-- columnas -->
+							<div id="columna2" style="float: left; height: 25em; width: 17em;">
+							   <?php include("columna2.php"); ?>
+							</div>
+						</div><!-- columnas -->
                                 
 
 <?php 
-}
 }
 ?>
 
