@@ -166,8 +166,12 @@ function getString($text) {
         include $_SERVER['DOCUMENT_ROOT'] . '/desnortado/i18n/' . $_SESSION['i18n_default'] . ".php";
         include $_SERVER['DOCUMENT_ROOT'] . '/desnortado/i18n/' . $_SESSION['i18n'] . ".php";
     }
-
-    return $i18n_array[$text];
+	if(isset($i18n_array[$text]))
+	{
+		return $i18n_array[$text];
+	}else{
+		return "[[¿?]]";
+	}
 }  
 
 function ItemsInMap($x_centro,$y_centro,$x_rango = 0,$y_rango = 0){
