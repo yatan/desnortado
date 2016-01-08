@@ -48,7 +48,7 @@ if(isset($_GET['lang']))
                         </center>
                     </div>
                     <div id="menu">
-                        <?php //include("menu.php"); ?>  
+                        <?php include("menu.php"); ?>  
                     </div><!--menu-->
                     <div id="cuerpo">
                         <center>
