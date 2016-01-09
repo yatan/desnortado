@@ -9,10 +9,10 @@
     <?php
     include_once("index_head.php");
 	include_once ("./include/funciones.php");
-	$x_centro = 0;
-	$y_centro = 0;
-	$x_rango = 2;
-	$y_rango = 2;
+	$x_centro = $objeto_usuario->X();
+	$y_centro = $objeto_usuario->Y();
+	$x_rango = $objeto_usuario->X_rango;
+	$y_rango = $objeto_usuario->Y_rango;
 	$items = ItemsInMap($x_centro,$y_centro,$x_rango,$y_rango);
     for ($y = $y_centro + $y_rango; $y >= $y_centro - $y_rango; $y--) {
        echo "<div class=\"Row\">";
