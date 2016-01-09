@@ -1,6 +1,6 @@
 <?php
 
-//include("../include/funciones.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/desnortado/include/funciones.php");
 select_lang();
 
 class item

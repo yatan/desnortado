@@ -30,6 +30,13 @@
        echo "</div>";
     }
     ?>
+</div>
+
+<div class="Lateral_Derecho">
+    <h2>Acciones</h2>
+    <?php FrasesAccion(1);?>
+</div>    
+
 </div>  
 </div>
 
