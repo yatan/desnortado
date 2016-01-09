@@ -334,4 +334,15 @@ function DeleteItem($id)
 	sql("DELETE FROM ownership WHERE item_id = ".$id,1);
 }
 
+function FrasesMover($id,$x,$y)
+{
+	echo <<<EOT
+	<form action="mover.php" method="post">
+	<input type="hidden" name="id" value=$id>		
+	<input type="hidden" name="X" value=$x>
+	<input type="hidden" name="Y" value=$y>
+	<input type="submit" value="$x.$y">
+	</form>
+EOT;
+}
 ?>

@@ -18,7 +18,7 @@
        echo "<div class=\"Row\">";
        for ($x = $x_centro - $x_rango; $x <= $x_centro + $x_rango; $x++) { 
            echo "<div class=\"Cell\">";
-           echo "<p>[$x] [$y]</p>";
+           echo FrasesMover($objeto_usuario->id_usuario,$x,$y);
 		   if(isset($items[$x][$y])){
 			   foreach($items[$x][$y] as $item)
 			   {
