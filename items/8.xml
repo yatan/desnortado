@@ -1,0 +1,10 @@
+<?xml version='1.0' standalone='yes'?>
+<item>
+	<id>8</id>
+	<nombre_clave>manzana</nombre_clave>
+	<descripcion>manzana_desc</descripcion>
+	<peso>0</peso>
+	<valor>100</valor>
+	<img>manzana.jpg</img>
+	<icon>manzana_icon.jpg</icon>
+</item>
