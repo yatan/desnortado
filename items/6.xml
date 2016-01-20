@@ -7,4 +7,9 @@
 	<valor>100</valor>
 	<img>mouth.jpg</img>
 	<icon>mouth_icon.jpg</icon>
+  <activo>
+    <inter>
+      <id>3</id>
+    </inter>
+  </activo>
 </item>

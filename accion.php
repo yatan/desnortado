@@ -38,6 +38,9 @@ switch($inter)
 			DeleteItem($de);
 		}
 		break;
+	case 3:
+		sql("UPDATE players_game SET HP = HP + 5 WHERE id = ".$usuario->id_usuario,true);
+		break;
 	default:
 		break;
 }

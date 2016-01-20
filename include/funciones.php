@@ -303,6 +303,12 @@ function CondicionesInteracciones($inter)
 			return false;
 		}
 		break;
+	case 3:
+		return true;
+		break;
+	default:
+		return true;
+		break;
 	}
 }
 
