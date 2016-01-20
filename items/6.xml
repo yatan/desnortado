@@ -1,10 +1,15 @@
-﻿<?xml version='1.0' standalone='yes'?>
+<?xml version='1.0' standalone='yes'?>
 <item>
-  <id>6</id>
-  <nombre_clave>piernader</nombre_clave>
-  <descripcion>piernader_desc</descripcion>
-  <peso>0</peso>
-  <valor>100</valor>
-  <img>Right_Leg.png</img>
-  <icon>Right_Leg_Icon.png</icon>
+	<id>6</id>
+	<nombre_clave>boca</nombre_clave>
+	<descripcion>boca_desc</descripcion>
+	<peso>0</peso>
+	<valor>100</valor>
+	<img>mouth.jpg</img>
+	<icon>mouth_icon.jpg</icon>
+  <activo>
+    <inter>
+      <id>3</id>
+    </inter>
+  </activo>
 </item>

@@ -303,6 +303,12 @@ function CondicionesInteracciones($inter)
 			return false;
 		}
 		break;
+	case 3:
+		return true;
+		break;
+	default:
+		return true;
+		break;
 	}
 }
 
@@ -337,7 +343,7 @@ function DeleteItem($id)
 function FrasesMover($id,$x,$y)
 {
 	//Miramos si tiene piernas
-	$ret = sql("SELECT items.id_item FROM items INNER JOIN ownership ON items.id_item = ownership.item_id WHERE ( items.type = 5 OR items.type = 6) AND ownership.owner_id = ".$id);
+	$ret = sql("SELECT items.id_item FROM items INNER JOIN ownership ON items.id_item = ownership.item_id WHERE ( items.type = 5 ) AND ownership.owner_id = ".$id);
 	if($ret != NULL)
 	{//Tiene piernas -> Anda
 	echo <<<EOT

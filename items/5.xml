@@ -1,8 +1,8 @@
 <?xml version='1.0' standalone='yes'?>
 <item>
 	<id>5</id>
-	<nombre_clave>piernaizq</nombre_clave>
-	<descripcion>piernaizq_desc</descripcion>
+	<nombre_clave>pierna</nombre_clave>
+	<descripcion>pierna_desc</descripcion>
 	<peso>0</peso>
 	<valor>100</valor>
 	<img>Left_Leg.png</img>
