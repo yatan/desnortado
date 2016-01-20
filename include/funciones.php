@@ -170,7 +170,7 @@ function getString($text) {
 	{
 		return $i18n_array[$text];
 	}else{
-		return "[[¿?]]";
+		return "[[string ".$text." not found]]";
 	}
 }  
 
