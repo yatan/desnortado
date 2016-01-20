@@ -1,0 +1,10 @@
+<?xml version='1.0' standalone='yes'?>
+<item>
+	<id>6</id>
+	<nombre_clave>boca</nombre_clave>
+	<descripcion>boca_desc</descripcion>
+	<peso>0</peso>
+	<valor>100</valor>
+	<img>mouth.jpg</img>
+	<icon>mouth_icon.jpg</icon>
+</item>

@@ -419,6 +419,12 @@ $i18n_array['madera'] = "Madera";
 $i18n_array['madera_desc'] ="Pequeña madera que puedes usarla con un brazo para hacer algo de daño.";
 $i18n_array['pierna'] = "Pierna";
 $i18n_array['pierna_desc'] = "Tu leal pierna. Va contigo a todas partes.";
+$i18n_array['boca'] = "Boca";
+$i18n_array['boca_desc'] = "La boca. Una herramienta indispensable para hablar y comer.";
+$i18n_array['oido'] = "Oído";
+$i18n_array['oido_desc'] = "Si no oyes nada es que te falta uno de estos.";
+
+// $i18n_array[''] = 
 
 //Interacciones
 

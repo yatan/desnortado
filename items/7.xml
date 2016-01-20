@@ -1,0 +1,10 @@
+<?xml version='1.0' standalone='yes'?>
+<item>
+	<id>7</id>
+	<nombre_clave>oido</nombre_clave>
+	<descripcion>oido_desc</descripcion>
+	<peso>0</peso>
+	<valor>100</valor>
+	<img>oido.png</img>
+	<icon>oido_icon.png</icon>
+</item>
