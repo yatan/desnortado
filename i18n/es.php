@@ -417,10 +417,8 @@ $i18n_array['mano'] = "Mano";
 $i18n_array['mano_desc'] ="Pequeña mano que puedes usarla con un brazo para hacer algo de daño.";
 $i18n_array['madera'] = "Madera";
 $i18n_array['madera_desc'] ="Pequeña madera que puedes usarla con un brazo para hacer algo de daño.";
-$i18n_array['piernaizq'] = "Pierna izquierda.";
-$i18n_array['piernaizq_desc'] = "Tu leal pierna izquierda. Va contigo a todas partes.";
-$i18n_array['piernader'] = "Pierna derecha.";
-$i18n_array['piernader_desc'] = "Tu leal pierna derecha. Nunca se ha separado de ti.";
+$i18n_array['pierna'] = "Pierna";
+$i18n_array['pierna_desc'] = "Tu leal pierna. Va contigo a todas partes.";
 
 //Interacciones
 
