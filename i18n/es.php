@@ -423,7 +423,8 @@ $i18n_array['boca'] = "Boca";
 $i18n_array['boca_desc'] = "La boca. Una herramienta indispensable para hablar y comer.";
 $i18n_array['oido'] = "Oído";
 $i18n_array['oido_desc'] = "Si no oyes nada es que te falta uno de estos.";
-
+$i18n_array['manzana'] = "Manzana";
+$i18n_array['manzana_desc'] = "Una manzana. Envenenada? Quizás."
 // $i18n_array[''] = 
 
 //Interacciones
